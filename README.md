@@ -31,3 +31,5 @@ Remember the model to represent a task:
 ![](images/add-filter.png)
 
 7. Implement the logic so when the filters are applied the data is filtered accordingly
+
+8. Transform your project into a PWA:  [task-planner-pwa](https://github.com/COSW-ECI/task-planner-pwa)
