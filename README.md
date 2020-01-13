@@ -1,4 +1,4 @@
-# Task Planner Project - Front End - Part 2
+# 1.4 Task Planner Project - Front End - Part 2
 
 1. Open the project created on Part 1
 
