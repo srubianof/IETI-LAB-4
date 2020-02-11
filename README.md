@@ -1,14 +1,23 @@
-# 1.4 Task Planner Project - Front End - Part 2
+![](images/react-material-heroku.png)
 
-1. Open the project created on Part 1
+<h1 align="center">1.4 Task Planner Project - Front End - Part 2</h1>
 
-2. Create the NewTask.js component and the CSS if needed (use Material-UI library!)
+[![npm](https://img.shields.io/badge/npm-v6.13.4-red.svg)](https://www.npmjs.com/)
+[![npx](https://img.shields.io/badge/dependencies-npx-orange)](https://www.npmjs.com/package/npx)
+[![material](https://img.shields.io/badge/dependencies-material--ui-yellow)](https://material-ui.com/)
+[![react-router](https://img.shields.io/badge/dependencies-react--router-blue)](https://reacttraining.com/react-router/)
+[![heroku](https://img.shields.io/badge/%E2%86%91_Deploy_to-Heroku-7056bf.svg)](https://www.heroku.com/)
+
+
+1. Open the project created on Part 1.
+
+2. Create the NewTask.js component and the corresponding CSS file if needed (use the Material-UI library!).
 
 ![](images/new-task.png)
 
-3. Modify the App.js component so it uses *BrowserRouter* to enable the navigation from the + floating action button from the main view to take you to the *NewTask* component (https://reacttraining.com/react-router/web/example/basic)
+3. Modify the App.js component so that it uses [BrowserRouter](https://reacttraining.com/react-router/web/example/basic) to enable the navigation from a "+" [floating action button](https://material-ui.com/components/floating-action-button/) in the main view to take the user to the *NewTask* component.
 
-4. Implement the logic to be able to connect the main view so when you create a new task this task is added to the list on the main view.
+4. Implement the logic to be able to connect the main view so that the new task is added to the list on the main view when the user clicks the add button.
 
 Remember the model to represent a task:
   ```javascript
@@ -26,10 +35,10 @@ Remember the model to represent a task:
 
 ![](images/update-profile.png)
 
-6. Create a Modal that is display the filter control options (https://material-ui.com/utils/modal/)
+6. Create a [Modal](https://material-ui.com/utils/modal/) to display the options for filtering the list of tasks.
 
 ![](images/add-filter.png)
 
-7. Implement the logic so when the filters are applied the data is filtered accordingly
+7. Implement the logic so that the data is filtered according to the applied filters.
 
-8. Transform your project into a PWA:  [task-planner-pwa](https://github.com/COSW-ECI/task-planner-pwa)
+8. Transform your project into a PWA:  [task-planner-pwa](https://github.com/ieti-eci/1.5-task-planner-pwa)
