@@ -40,5 +40,3 @@ Remember the model to represent a task:
 ![](images/add-filter.png)
 
 7. Implement the logic so that the data is filtered according to the applied filters.
-
-8. Transform your project into a PWA:  [task-planner-pwa](https://github.com/ieti-eci/1.5-task-planner-pwa)
