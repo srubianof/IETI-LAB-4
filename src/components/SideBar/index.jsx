@@ -20,6 +20,10 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {TaskPlanner} from "../TaskPlanner";
 import {useHistory} from "react-router";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import {Fab} from "@material-ui/core";
+import AddIcon from '@material-ui/icons/Add';
+import {Link} from "react-router-dom";
+
 
 export function SideBar({userLogged, setUserLogged}) {
     const history = useHistory();
@@ -82,7 +86,6 @@ export function SideBar({userLogged, setUserLogged}) {
                 <Divider/>
 
                 <List>
-
                     <ListItem>
                         <ListItemIcon><AccountCircleIcon/></ListItemIcon>
                         <ListItemText primary={userLogged.user}/>
@@ -116,7 +119,13 @@ export function SideBar({userLogged, setUserLogged}) {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.toolbar}/>
+                <div style={{float: "right"}}>
+                    <Fab color="primary" aria-label="add" component={Link} to={'/new-task'}>
+                        <AddIcon/>
+                    </Fab>
+                </div>
                 <TaskPlanner/>
+
             </main>
         </div>
     );

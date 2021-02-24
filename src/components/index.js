@@ -1,5 +1,6 @@
-export * from './SideBar/'
+export * from './SideBar'
 export * from './Login'
 export * from './PrivateRoute'
 export * from './TaskPlanner'
 export * from './TaskCard'
+export * from './NewTask'

@@ -1,0 +1,30 @@
+# Ignore environment variables
+.env
+.env*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+
+## Builds
+dist
+lib
+
+## Docz
+.docz
+
+## idea
+.idea/
+
+## History
+.history
+
+# Desktop services store
+**/.DS_Store
+
+./package-lock.json
+./yarn.lock
