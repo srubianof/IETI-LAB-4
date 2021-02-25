@@ -1,9 +1,9 @@
 import React from 'react';
 import {TaskCard} from "../TaskCard";
-import {getTasks} from "../../services/getTasks";
+import {tasks} from "../../services/getTasks";
 
-export const TaskPlanner = () => {
-    const tasks = getTasks();
+export const TaskPlanner = ({tasks}) => {
+    console.log(tasks)
     return (
         <div>
             {
@@ -11,7 +11,6 @@ export const TaskPlanner = () => {
                     <div style={{padding: '20px 0', width:'1000px'}} key={responsible.email}>
                         <TaskCard  dueDate={dueDate} description={description} responsible={responsible.email} status={status} />
                     </div>
-
                 ))
             }
         </div>

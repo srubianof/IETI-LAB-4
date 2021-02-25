@@ -6,7 +6,6 @@ import FormControl from "@material-ui/core/FormControl";
 import DateFnsUtils from '@date-io/date-fns';
 import {KeyboardDatePicker, MuiPickersUtilsProvider} from '@material-ui/pickers';
 import AddIcon from "@material-ui/icons/Add";
-import {addTask} from "../../services/getTasks";
 import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const NewTask = () => {
+export const NewTask = ({setTasks}) => {
     const classes = useStyles();
     const [value, setValue] = React.useState('');
     const [selectedDate, setSelectedDate] = React.useState(new Date());
@@ -101,7 +100,7 @@ export const NewTask = () => {
             </Main>
             <div style={{float: "right"}}>
                 <Fab color="primary" aria-label="add" onClick={() => {
-                    addTask(task)
+                    setTasks(items => [...items, task])
                 }}
                      component={Link} to={'/task-planner'}>
                     <AddIcon/>

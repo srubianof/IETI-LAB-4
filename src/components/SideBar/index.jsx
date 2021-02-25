@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import {useTheme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -23,13 +23,18 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {Fab} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 import {Link} from "react-router-dom";
+import {getUsers} from "../Login/getUsers";
+import Filter from "../Filter";
 
 
-export function SideBar({userLogged, setUserLogged}) {
+
+
+export function SideBar({userLogged, setUserLogged,tasks}) {
     const history = useHistory();
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -38,7 +43,7 @@ export function SideBar({userLogged, setUserLogged}) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-
+    console.log(getUsers())
     return (
         <div className={classes.root}>
             <CssBaseline/>
@@ -102,7 +107,7 @@ export function SideBar({userLogged, setUserLogged}) {
                                         user: '',
                                         password: ''
                                     })
-                                    history.push('/signin')
+                                    history.push('/')
                                 }
                                 }>
                                     <ListItemIcon>
@@ -124,8 +129,8 @@ export function SideBar({userLogged, setUserLogged}) {
                         <AddIcon/>
                     </Fab>
                 </div>
-                <TaskPlanner/>
-
+                <Filter/>
+                <TaskPlanner tasks={tasks}/>
             </main>
         </div>
     );

@@ -19,6 +19,7 @@ export const SignIn = ({setUserLogged}) => {
     const [password, setPassword] = useState('');
     const handleSubmit = () => {
         const users = getUsers();
+
         if (users.some(({user: userItem, password: passwdItem}) => userItem === user && passwdItem === password)) {
             localStorage.setItem("user", user);
             localStorage.setItem("password", password);
