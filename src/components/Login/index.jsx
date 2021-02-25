@@ -9,21 +9,25 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import './index.css'
 import {useHistory} from "react-router";
+import {getUsers} from "./getUsers";
+import {Link} from "react-router-dom";
 
 
-export const Login = ({setUserLogged}) => {
+export const SignIn = ({setUserLogged}) => {
     const history = useHistory();
     const [user, setUser] = useState('');
-    const [passwd, setPasswd] = useState('');
+    const [password, setPassword] = useState('');
     const handleSubmit = () => {
-        setUserLogged({
-            user,
-            passwd
-        })
-        localStorage.setItem("user", user);
-        localStorage.setItem("password", passwd);
-        localStorage.setItem("logged",true);
-        history.push('/task-planner')
+        const users = getUsers();
+        if (users.some(({user: userItem, password: passwdItem}) => userItem === user && passwdItem === password)) {
+            localStorage.setItem("user", user);
+            localStorage.setItem("password", password);
+            localStorage.setItem("userCreds", JSON.stringify({user, password}))
+            localStorage.setItem("logged", true);
+            setUserLogged({user, password})
+            history.push('/task-planner')
+        }
+
     }
 
     return (
@@ -53,7 +57,7 @@ export const Login = ({setUserLogged}) => {
                             id="password"
                             autoComplete="current-password"
                             onChange={(e) => {
-                                setPasswd(e.target.value)
+                                setPassword(e.target.value)
                             }}
                         />
                     </FormControl>
@@ -66,6 +70,9 @@ export const Login = ({setUserLogged}) => {
                     >
                         Sign in
                     </Button>
+                    <Link to='/signup'>
+                        Don't have an account signup!
+                    </Link>
                 </Paper>
             </main>
         </>

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './App.css';
-import {Login, NewTask, PrivateRoute, SideBar} from "./components";
+import {NewTask, PrivateRoute, SideBar, SignIn, SignUp} from "./components";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import {Redirect} from "react-router";
 
@@ -13,14 +13,16 @@ function App() {
     return (
         <>
             <Router>
-                <Redirect from='/' to='/login'/>
+                <Redirect from='/' to='/signin'/>
                 <Switch>
-                    <Route exact path="/login"
-                           component={() => <Login setUserLogged={setUserLogged}/>}/>
+                    <Route exact path="/signin"
+                           component={() => <SignIn setUserLogged={setUserLogged}/>}/>
+                    <Route exact path="/signup"
+                           component={() => <SignUp />}/>
                     <PrivateRoute userLogged={userLogged} path="/task-planner"
                                   component={() => <SideBar userLogged={userLogged} setUserLogged={setUserLogged}/>}/>
                     <Route path="/new-task"
-                                  component={() => <NewTask/>}/>
+                           component={() => <NewTask/>}/>
                 </Switch>
 
             </Router>

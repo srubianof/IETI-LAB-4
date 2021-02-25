@@ -102,7 +102,7 @@ export function SideBar({userLogged, setUserLogged}) {
                                         user: '',
                                         password: ''
                                     })
-                                    history.push('/login')
+                                    history.push('/signin')
                                 }
                                 }>
                                     <ListItemIcon>
