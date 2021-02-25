@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import {useTheme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -27,9 +27,7 @@ import {getUsers} from "../Login/getUsers";
 import Filter from "../Filter";
 
 
-
-
-export function SideBar({userLogged, setUserLogged,tasks}) {
+export function SideBar({userLogged, setUserLogged, tasks, setTasks}) {
     const history = useHistory();
     const classes = useStyles();
     const theme = useTheme();
@@ -129,7 +127,7 @@ export function SideBar({userLogged, setUserLogged,tasks}) {
                         <AddIcon/>
                     </Fab>
                 </div>
-                <Filter/>
+                <Filter tasks={tasks} setTasks={setTasks}/>
                 <TaskPlanner tasks={tasks}/>
             </main>
         </div>

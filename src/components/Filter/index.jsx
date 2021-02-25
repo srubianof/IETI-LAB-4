@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import DateFnsUtils from "@date-io/date-fns";
@@ -17,8 +16,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Filter() {
+export default function Filter({tasks, setTasks}) {
     const [open, setOpen] = React.useState(false);
+    const [dateFilter, setDateFilter] = useState('');
+    const [responsible, setResponsible] = useState('');
+    const [status, setStatus] = useState('');
+    let oldTasks = {...tasks};
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -27,8 +30,16 @@ export default function Filter() {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleClear = () => {
+        setStatus('')
+        setDateFilter('')
+        setResponsible('')
+        setStatus('')
+        setTasks(oldTasks)
+    }
     const handleDateChange = (date) => {
-        console.log(date.toLocaleDateString())
+        setDateFilter(date.toLocaleDateString())
     };
 
     const useStyles = makeStyles((theme) => ({
@@ -51,6 +62,12 @@ export default function Filter() {
     const openPoper = Boolean(anchorEl);
     const [value, setValue] = React.useState('');
     const id = open ? 'simple-popover' : undefined;
+
+    const handleFilter = () => {
+        const filteredTasks = tasks.filter((task) =>
+            task.dueDate === dateFilter || task.status === status || task.responsible.email === responsible || task.responsible.name === responsible)
+        setTasks(filteredTasks)
+    }
 
     return (
         <div>
@@ -106,7 +123,7 @@ export default function Filter() {
                             <TextField id="standard-basic"
                                        label="Responsable"
                                        onChange={(e) => {
-                                           console.log(e.target.value)
+                                           setResponsible(e.target.value)
                                        }}
                                        required/>
                         </Popover>
@@ -114,7 +131,7 @@ export default function Filter() {
                     <div style={{marginLeft: '30%', width: 'auto'}}>
                         <FormControl component="fieldset">
                             <RadioGroup aria-label="gender" name="gender1" value={value} onChange={(e) => {
-                                console.log(e.target.value)
+                                setStatus(e.target.value)
 
                             }}>
                                 <FormControlLabel value="Ready" control={<Radio/>} label="Listo"/>
@@ -125,10 +142,18 @@ export default function Filter() {
                     </div>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button
+                        onClick={() => {
+                            handleClose()
+                            handleClear()
+                        }}
+                        color="primary">
                         Clear All
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={() => {
+                        handleClose()
+                        handleFilter()
+                    }} color="primary">
                         Apply
                     </Button>
                 </DialogActions>
